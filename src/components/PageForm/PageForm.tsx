@@ -45,12 +45,18 @@ const PageForm = () => {
     }
   };
 
-  const getPageByName = (event: SelectChangeEvent<string>) => {
-    const selectedTitle = event.target.value;
-    const chosenPage = pages.find((page) => page.title === selectedTitle);
-
-    if (chosenPage) {
-      setSelectedPage(chosenPage);
+  const getPageByName = async (event: SelectChangeEvent<string>) => {
+    const selectedId = event.target.value;
+    try {
+      setLoading(true);
+      const response = await axiosAPI(`pages/${selectedId}.json`);
+      if (response.data) {
+        setSelectedPage({ ...response.data, id: selectedId });
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -93,13 +99,13 @@ const PageForm = () => {
                 labelId="select-label"
                 displayEmpty
                 onChange={getPageByName}
-                value={selectedPage ? selectedPage.title : ""}
+                value={selectedPage ? selectedPage.id : ""}
               >
                 <MenuItem value="" disabled>
                   Choose a page
                 </MenuItem>
                 {pages.map((p) => (
-                  <MenuItem key={p.id} value={p.title}>
+                  <MenuItem key={p.id} value={p.id}>
                     {p.title}
                   </MenuItem>
                 ))}
