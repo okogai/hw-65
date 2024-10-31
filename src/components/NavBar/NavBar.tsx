@@ -41,6 +41,15 @@ const NavBar = () => {
               {category.title}
             </Button>
           ))}
+          <Button
+            color='inherit'
+            variant="text"
+            sx={{ mb: 1 }}
+            component={NavLink}
+            to={'/edit'}
+          >
+            Edit pages
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
