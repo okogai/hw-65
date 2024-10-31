@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Button,
@@ -7,11 +7,12 @@ import {
   Box,
   FormControl,
   Select,
-  MenuItem, SelectChangeEvent
-} from '@mui/material';
-import axiosAPI from '../../axiosAPI.ts';
-import { PagesFromDB } from '../../types';
-import Loader from '../Loader/Loader.tsx';
+  MenuItem,
+  SelectChangeEvent,
+} from "@mui/material";
+import axiosAPI from "../../axiosAPI.ts";
+import { PagesFromDB } from "../../types";
+import Loader from "../Loader/Loader.tsx";
 
 const PageForm = () => {
   const [pages, setPages] = useState<PagesFromDB[]>([]);
@@ -21,7 +22,7 @@ const PageForm = () => {
   const getPageInfo = async () => {
     setLoading(true);
     try {
-      const response = await axiosAPI('pages.json');
+      const response = await axiosAPI("pages.json");
       const loadedPages = Object.keys(response.data).map((pageKey) => {
         return {
           ...response.data[pageKey],
@@ -36,7 +37,9 @@ const PageForm = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     if (selectedPage) {
       setSelectedPage({ ...selectedPage, [e.target.name]: e.target.value });
     }
@@ -90,7 +93,7 @@ const PageForm = () => {
                 labelId="select-label"
                 displayEmpty
                 onChange={getPageByName}
-                value={selectedPage ? selectedPage.title : ''}
+                value={selectedPage ? selectedPage.title : ""}
               >
                 <MenuItem value="" disabled>
                   Choose a page

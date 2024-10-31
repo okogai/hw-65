@@ -1,13 +1,13 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from "react-router-dom";
 
 const PAGES = [
-  {title: 'Our Services', id: 'services'},
-  {title: 'Our Cases', id: 'cases'},
-  {title: 'Our team', id: 'team'},
-  {title: 'Careers with Us', id: 'career'},
-  {title: 'About us', id: 'about'},
-  {title: 'Contact Us', id: 'contacts'}
+  { title: "Our Services", id: "services" },
+  { title: "Our Cases", id: "cases" },
+  { title: "Our team", id: "team" },
+  { title: "Careers with Us", id: "career" },
+  { title: "About us", id: "about" },
+  { title: "Contact Us", id: "contacts" },
 ];
 
 const NavBar = () => {
@@ -32,7 +32,7 @@ const NavBar = () => {
           </Typography>
           {PAGES.map((category) => (
             <Button
-              color='inherit'
+              color="inherit"
               key={category.id}
               variant="text"
               sx={{ mb: 1 }}
@@ -42,11 +42,11 @@ const NavBar = () => {
             </Button>
           ))}
           <Button
-            color='inherit'
+            color="inherit"
             variant="text"
             sx={{ mb: 1 }}
             component={NavLink}
-            to={'/edit'}
+            to={"/edit"}
           >
             Edit pages
           </Button>
